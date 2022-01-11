@@ -61,29 +61,21 @@ const people = [
   "Biondo, Frank",
 ];
 
-const inventorsCopy = [...inventors];
-
 // Array.prototype.filter()
 // 1. Filter the list of inventors for those who were born in the 1500's
 
 const filterInventors = (state) =>
   state.filter((el) => el.year >= 1500 && el.year < 1600);
 
-console.log(filterInventors(inventors));
-
 // Array.prototype.map()
 // 2. Give us an array of the inventors first and last names
 
 const mapInventors = (state) => state.map((el) => `${el.first}  ${el.last}`);
 
-console.log(mapInventors(inventors));
-
 // Array.prototype.sort()
 // 3. Sort the inventors by birthdate, oldest to youngest
 
 const sortInventors = (state) => state.sort((a, b) => a.year - b.year);
-
-console.log(sortInventors(inventors));
 
 // Array.prototype.reduce()
 // 4. How many years did all the inventors live all together?
@@ -92,8 +84,6 @@ const reduceInventors = (state) =>
   state.reduce((a, b) => {
     return a + (b.passed - b.year);
   }, 0);
-
-console.log(reduceInventors(inventors));
 
 // 5. Sort the inventors by years lived
 
@@ -104,9 +94,7 @@ const sortByYearsLived = (state) =>
     return currentEl - nextEl;
   });
 
-console.log(sortByYearsLived(inventorsCopy));
-
-// 7. sort Exercise
+// 6. sort Exercise
 // Sort the people alphabetically by last name
 
 const sortPeople = (state) => {
@@ -117,9 +105,7 @@ const sortPeople = (state) => {
   });
 };
 
-console.log(sortPeople(people));
-
-// 8. Reduce Exercise
+// 7. Reduce Exercise
 // Sum up the instances of each of these
 const data = [
   "car",
@@ -146,4 +132,12 @@ const countInstances = data.reduce(function (obj, el) {
   return obj;
 }, {});
 
-console.log(countInstances);
+console.log(
+  filterInventors(inventors),
+  mapInventors(inventors),
+  sortInventors(inventors),
+  reduceInventors(inventors),
+  sortByYearsLived(inventors),
+  sortPeople(people),
+  countInstances
+);
